@@ -1,54 +1,452 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Tutoriel : Remplir le PDF FFN</title>
-  <style>
-    body { font-family: sans-serif; padding: 20px; line-height: 1.6; background: #f8f9fa; }
-    h1, h2 { color: #005baa; }
-    .step { background: white; padding: 15px; border-left: 4px solid #005baa; margin: 1em 0; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
-    img { max-width: 100%; height: auto; }
-  </style>
-</head>
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tutoriel : Remplir le PDF FFN</title>
+    <link rel="icon" type="image/png" href="newlogo.png">
+    <style>
+      body {
+        font-family: sans-serif;
+        padding: 20px;
+        line-height: 1.6;
+        background: #f8f9fa;
+        margin-left: 260px;
+        /* Laisse la place au menu fixe */
+        transition: margin-left 0.2s;
+      }
+
+      h1,
+      h2 {
+        color: #005baa;
+      }
+
+      .step {
+        background: white;
+        padding: 15px;
+        border-left: 4px solid #005baa;
+        margin: 1em 0;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      }
+
+      img.tutorial-image {
+        max-width: 350px;
+        width: 100%;
+        height: auto;
+        display: block;
+        margin: 18px auto 18px auto;
+        border: 2px solid #e0e6ef;
+        background: #f3f7fb;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        padding: 10px;
+      }
+
+      /* Menu sommaire fixe */
+      #sommaire {
+        position: fixed;
+        top: 30px;
+        left: 20px;
+        width: 220px;
+        background: #fff;
+        border: 1px solid #d0d7de;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        padding: 1em 1em 1em 1.2em;
+        z-index: 1000;
+        font-size: 0.97em;
+        max-height: 90vh;
+        overflow-y: auto;
+      }
+
+      #sommaire strong {
+        display: block;
+        margin-bottom: 0.5em;
+        color: #005baa;
+        font-size: 1.08em;
+      }
+
+      #sommaire ul {
+        list-style: none;
+        padding-left: 0;
+        margin: 0;
+      }
+
+      #sommaire ul ul {
+        margin-left: 1em;
+        font-size: 0.95em;
+        margin-top: 0.2em;
+      }
+
+      #sommaire li {
+        margin-bottom: 0.3em;
+      }
+
+      #sommaire a {
+        color: #005baa;
+        text-decoration: none;
+        transition: color 0.15s;
+      }
+
+      #sommaire a:hover,
+      #sommaire a:focus {
+        text-decoration: underline;
+        color: #003e7a;
+      }
+
+      /* Responsive : masquer le sommaire sur mobile/tablette */
+      @media (max-width: 900px) {
+        #sommaire {
+          display: none;
+        }
+
+        body {
+          margin-left: 0;
+        }
+      }
+    </style>
+  </head>
+
 <body>
+  <header style="display:flex;align-items:center;gap:18px;margin-bottom:18px;">
+    <img src="newlogo.png" alt="Logo du club Dauphins Châtellerault" style="height:240px;width:auto;">
+    <div>
+      <h1 id="top" style="margin-bottom:0.2em;">Tutoriel – Comment remplir le formulaire FFN (PDF)</h1>
+      <div style="color:#005baa;font-weight:bold;font-size:1.1em;">Club des Dauphins de Châtellerault</div>
+    </div>
+  </header>
+  <nav id="sommaire">
+    <strong>Sommaire</strong>
+    <ul>
+      <li><a href="#etape1">Étape 1 : Télécharger le PDF</a></li>
+      <li><a href="#etape2">Étape 2 : Ouvrir le PDF</a></li>
+      <li><a href="#aide">Aide au remplissage</a>
+        <ul>
+          <li><a href="#section1">Section 1 : Type d'inscription</a></li>
+          <li><a href="#section2">Section 2 : Infos personnelles</a></li>
+          <li>
+            <a href="#section3">Section 3 : Type de licence</a>
+            <ul>
+              <li><a href="#section3a">Section 3A : Formulaire MAJEUR</a></li>
+              <li><a href="#section3b">Section 3B : Formulaire MINEUR</a></li>
+            </ul>
+          </li>
+          <li><a href="#section-assurance">Section 4 :  Assurance</a></li>
+          <li><a href="#section-signature">Section 5 :  Signature</a></li>
+        </ul>
+      </li>
+      <li><a href="#etape5">Étape 5 : Enregistrer et ajouter sur MonClub</a></li>
+     
+      <li><a href="#problemes">Problèmes fréquents</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div style="margin-top:28px; display: flex; flex-direction: column; gap: 10px;">
+      <a href="https://dauphinschatellerault.fr" target="_blank" style="background:#005baa;color:#fff;padding:10px 0;border-radius:6px;text-align:center;text-decoration:none;font-weight:bold;box-shadow:0 2px 8px rgba(0,0,0,0.07);transition:background 0.2s;">
+        Site du club
+      </a>
+      <a href="https://dauphinschatellerault.monclub.app" target="_blank" style="background:#00a6a6;color:#fff;padding:10px 0;border-radius:6px;text-align:center;text-decoration:none;font-weight:bold;box-shadow:0 2px 8px rgba(0,0,0,0.07);transition:background 0.2s;">
+        Accès MonClub
+      </a>
+    </div>
+  </nav>
 
-<h1>Tutoriel – Comment remplir le formulaire FFN (PDF)</h1>
+  
+  <p>Ce tutoriel vous guide étape par étape pour remplir correctement le formulaire PDF fourni par la Fédération
+    Française de Natation.</p>
+  <p style="color:#444;font-size:1.04em;margin-bottom:8px;">
+    <strong>Mise à jour du tutoriel&nbsp;:</strong> 22/06/2025
+  </p>
+  <div style="background:#fff3cd;color:#856404;border:1.5px solid #ffeeba;border-radius:7px;padding:14px 18px;margin-bottom:22px;font-size:1.05em;">
+    <strong>Note Importante :</strong><br>
+    Les informations ci-dessous sont des indications et des conseils pour vous aider à remplir votre formulaire de licence FFN. Vous êtes libre de suivre ou non ces recommandations, et de compléter le formulaire selon vos propres choix et votre situation personnelle.
+  </div>
 
-<p>Ce tutoriel vous guide étape par étape pour remplir correctement le formulaire PDF fourni par la Fédération Française de Natation.</p>
+  <div class="step">
+    <h2 id="etape1">📥 Étape 1 : Télécharger le PDF</h2>
+    <ul>
+      <li>
+        <a href="./20250609_formulaire_licence_mineur_2026_remplissable.pdf" target="_blank">
+          Télécharger le formulaire FFN 2026 <strong>mineur</strong>
+        </a>
+      </li>
+      <li>
+        <a href="./20250608_formulaire_licence__Majeur_2026_remplissable.pdf" target="_blank">
+          Télécharger le formulaire FFN 2026 <strong>majeur</strong>
+        </a>
+      </li>
+    </ul>
+  </div>
 
-<div class="step">
-  <h2>📥 Étape 1 : Télécharger le PDF</h2>
-  <p><a href="LIEN_VERS_PDF" target="_blank">Cliquez ici pour télécharger le PDF FFN</a></p>
-</div>
+  <div class="step">
+    <h2 id="etape2">🖥️ Étape 2 : Ouvrir le PDF</h2>
+    <p>Utilisez de préférence <strong>Adobe Acrobat Reader</strong> (gratuit) pour ouvrir le fichier.</p>
+  </div>
 
-<div class="step">
-  <h2>🖥️ Étape 2 : Ouvrir le PDF</h2>
-  <p>Utilisez de préférence <strong>Adobe Acrobat Reader</strong> (gratuit) pour ouvrir le fichier.</p>
-</div>
+  <div class="step">
+    <h2 id="aide">📝 Aide au remplissage du formulaire</h2>
+    <div class="step">
+      <h3 id="section1">Section 1 : Type d'inscription FFN</h3>
+      <img class="tutorial-image" src="type_inscription.png" alt="Exemple section type de licence FFN" style="max-width:100%;margin:1em 0;">
+      <ul>
+        <li>
+          <strong>Nouvelle licence :</strong>
+          <br>
+          Si c’est la première année que le nageur s’inscrit dans un club de natation affilié à la FFN, cochez la case
+          <strong>“Nouvelle licence”</strong>.
+        </li>
+        <li>
+          <strong>Renouvellement :</strong>
+          <br>
+          Si le nageur était inscrit dans le club des Dauphins de Châtellerault l’an dernier, cochez la case
+          <strong>“Renouvellement”</strong>.
+          Indiquez le numéro de licence de l’an dernier (appelé <strong>Identifiant Unique Fédéral (IUF)</strong>) dans
+          la zone prévue à cet effet.
+        </li>
+        <li>
+          <strong>Transfert :</strong>
+          <br>
+          Si le nageur était inscrit dans un autre club FFN que les Dauphins de Châtellerault l’an dernier, cochez la
+          case <strong>“Transfert”</strong> et indiquez le nom de l’ancien club.
+          Indiquez également le numéro de licence de l’an dernier (<strong>IUF</strong>).
+        </li>
+      </ul>
+      <p style="margin-top:1em;">
+        <em>⚠️ Remplissez soigneusement ces informations, elles sont essentielles pour valider la licence.</em>
+      </p>
+    </div>
 
-<div class="step">
-  <h2>✍️ Étape 3 : Remplir les champs</h2>
-  <p>Cliquez sur les zones de texte pour entrer vos informations : nom, prénom, numéro de licence, etc.</p>
-</div>
+    <div class="step">
 
-<div class="step">
-  <h2>💾 Étape 4 : Enregistrer et envoyer</h2>
-  <p>Une fois le formulaire rempli, cliquez sur <strong>Fichier > Enregistrer sous</strong> et envoyez-le à l’adresse demandée.</p>
-</div>
+      <h3 id="section2">Section 2 : Informations personnelles du licencié</h3>
+      <img class="tutorial-image" src="info_adherent.png" alt="Exemple section informations personnelles du licencié"
+        style="max-width:100%;margin:1em 0;">
+      <ul>
+        <li>
+          <strong>Nom et prénom :</strong><br>
+          Indiquez le nom de famille et le prénom du licencié, exactement comme sur ses papiers d’identité.
+        </li>
+        <li>
+          <strong>Nationalité :</strong><br>
+          Précisez la nationalité du licencié.
+        </li>
+        <li>
+          <strong>Sexe (H/F) :</strong><br>
+          Sélectionnez H (homme) ou F (femme) selon le cas.
+        </li>
+        <li>
+          <strong>Date de naissance :</strong><br>
+          Indiquez la date de naissance au format JJ/MM/AAAA.
+        </li>
+        <li>
+          <strong>Adresse :</strong><br>
+          Complétez l’adresse complète du domicile du licencié.
+        </li>
+        <li>
+          <strong>Code postal et ville :</strong><br>
+          Indiquez le code postal et la ville de résidence.
+        </li>
+        <li>
+          <strong>E-mail personnel (obligatoire) :</strong><br>
+          Renseignez une adresse e-mail valide et consultée régulièrement. Elle est indispensable pour la gestion de la
+          licence.
+        </li>
+        <li>
+          <strong>Téléphone :</strong><br>
+          Indiquez au moins un numéro de téléphone (Tél 01 ou Tél 02) pour pouvoir être contacté facilement.
+        </li>
+        <li>
+          <strong>Je suis athlète handisport :</strong><br>
+          Si le licencié est un(e) athlète handisport, cochez la case correspondante.
+        </li>
+        <li>
+          <strong>Recevoir les e-mailings d’information :</strong><br>
+          Cochez OUI ou NON selon votre choix pour recevoir les e-mails d’information de la FFN et de ses partenaires.
+        </li>
+      </ul>
+      <p style="margin-top:1em;">
+        <em>⚠️ Vérifiez bien l’exactitude de ces informations, elles sont indispensables pour l’inscription et la
+          communication avec le club.</em>
+      </p>
+    </div>
 
-<div class="step">
-  <h2>❗ Problèmes fréquents</h2>
-  <ul>
-    <li>Le PDF ne se remplit pas ? Essayez avec Acrobat Reader (évitez le navigateur).</li>
-    <li>Vous ne pouvez pas sauvegarder ? Faites une impression PDF (« Imprimer » > PDF).</li>
-  </ul>
-</div>
+    <div class="step">
+      <h2 id="section3">Section 3 : Type de licence</h2>
+      <p>
+        Selon votre situation, reportez-vous à la version du formulaire qui vous concerne.<br>
+        <strong>Pour les adhérents du club :</strong> seules les cases suivantes sont à cocher selon votre activité.
+      </p>
 
-<div class="step">
-  <h2>📩 Besoin d’aide ?</h2>
-  <p>Contactez-nous à <a href="mailto:tonmail@exemple.com">tonmail@exemple.com</a></p>
-</div>
+      <div style="margin-bottom:2em;">
+        <h3 id="section3a">Section 3A : Formulaire MAJEUR</h3>
+        <img class="tutorial-image" src="type_licence_majeur.png" alt="Type de licence - Majeur" style="max-width:100%;margin:1em 0;">
+        <ul>
+          <li>
+            <strong>Natation :</strong> à cocher si vous pratiquez la natation sportive ou loisir (hors aquagym).
+          </li>
+          <li>
+            <strong>Compétition :</strong> à cocher uniquement si vous participez à des compétitions officielles FFN.
+          </li>
+          <li>
+            <strong>Nagez Forme Bien-être :</strong> à cocher si vous pratiquez l’aquagym (activité orientée plaisir,
+            détente, bien-être).
+          </li>
+          <li>
+            <em>Ne cochez pas les autres cases sauf indication du club.</em>
+          </li>
+        </ul>
+        <!-- Bloc questionnaire santé MAJEUR -->
+
+        <h4>Questionnaire santé – MAJEUR</h4>
+        <ul>
+          <li>
+            Vous devez répondre au <strong>Questionnaire Santé - FFN Majeurs</strong> (QS - FFN Majeurs) dans le
+            formulaire FFN ou lors de l'inscription via MonClub.
+          </li>
+          <li>
+            Si vous répondez <strong>NON à toutes les questions</strong>, cochez la case prévue à cet effet sur le
+            formulaire.
+          </li>
+          <li>
+            Si vous répondez <strong>OUI à au moins une question</strong>, un certificat médical de moins de 6 mois est
+            obligatoire pour obtenir la licence (A fournir dans MonClub).
+          </li>
+        </ul>
+
+      </div>
+
+      <div>
+        <h3 id="section3b">Section 3B : Formulaire MINEUR</h3>
+        <img class="tutorial-image" src="type_licence_mineur.png" alt="Type de licence - Mineur" style="max-width:100%;margin:1em 0;">
+        <ul>
+          <li>
+            <strong>J’apprends à nager / Aisance aquatique :</strong> à cocher si l’enfant est en cours d’apprentissage
+            de la natation ou dans un groupe d’aisance aquatique.
+          </li>
+          <li>
+            <strong>Compétition :</strong> à cocher uniquement si l’enfant participe à des compétitions officielles FFN.
+          </li>
+          <li>
+            <strong>Nagez Forme Bien-être :</strong> à cocher si l’enfant pratique l’aquagym (activité orientée plaisir,
+            détente, bien-être).
+          </li>
+          <li>
+            <em>Ne cochez pas les autres cases sauf indication du club.</em>
+          </li>
+        </ul>
+        <!-- Bloc questionnaire santé MINEUR -->
+        <h4>Questionnaire santé – MINEUR</h4>
+        <ul>
+          <li>
+            Vous devez répondre au <strong>Questionnaire Santé - QS Sport Mineurs</strong> avec le mineur concerné.
+          </li>
+          <li>
+            Si vous répondez <strong>NON à toutes les questions</strong>, cochez la case prévue à cet effet sur le
+            formulaire.
+          </li>
+          <li>
+            Si vous répondez <strong>OUI à au moins une question</strong>, un certificat médical de moins de 6 mois est
+            obligatoire pour obtenir la licence.
+          </li>
+          <li>
+            <strong>Après la case du questionnaire santé, deux cases sont proposées <u>uniquement si l’adhésion concerne un enfant inscrit en groupe compétition</u> :</strong>
+            <ul>
+              <li>
+                <strong>Autorise tout prélèvement nécessitant une technique invasive</strong> (prise de sang, prélèvement de phanères) lors d’un contrôle antidopage sur l’enfant mineur ou le majeur protégé.<br>
+                <em>Cette case est à cocher uniquement si vous donnez votre accord pour ce type de prélèvement.</em>
+              </li>
+              <li>
+                <strong>Reconnais être informé que l’absence d’autorisation parentale est constitutive d’un refus de se soumettre à ce contrôle</strong> et est susceptible d’entraîner des sanctions disciplinaires à son égard.<br>
+                <em>Cette case permet d’attester que vous avez bien pris connaissance de cette information, même si vous ne donnez pas votre autorisation.</em>
+              </li>
+            </ul>
+            <em>Pensez à bien lire et compléter ces deux points si votre enfant est concerné par la compétition.</em>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- Section 4 : Assurance -->
+    <div class="step" id="section-assurance">
+      <h3>Section 4 : Assurance</h3>
+      <img class="tutorial-image" src="assurance.png" alt="Exemple section assurance" style="max-width:100%;margin:1em 0;">
+      <ul>
+        <li>
+          <strong>Garantie de base :</strong> Cochez <b>OUI</b>. Cette garantie est <u>incluse dans le prix de la licence</u>, il n'y a rien à payer en plus.
+        </li>
+        <li>
+          <strong>Garantie complémentaire :</strong> Cochez <b>NON</b>. Si vous cochez oui, cette option entraîne un coût supplémentaire pour l’adhérent.<br>
+          <em>Pour plus de détails, voir la page suivante du formulaire.</em>
+        </li>
+      </ul>
+      <p style="margin-top:1em;">
+        <em>⚠️ Si vous souhaitez souscrire à la garantie complémentaire, renseignez-vous bien sur les tarifs et modalités avant de cocher OUI.</em>
+      </p>
+    </div>
+
+    <!-- Section 5 : Signature -->
+    <div class="step" id="section-signature">
+      <h3>Section 5 : Signature</h3>
+      <img class="tutorial-image" src="signature.png" alt="section-signature" style="max-width:100%;margin:1em 0;">
+      <p>
+        La dernière étape consiste à <strong>dater</strong> le formulaire et à le <strong>signer</strong>. Merci de bien signer dans le <b>cadre "LICENCIÉ"</b> à droite, et non en dessous de la date ni dans le cadre “CLUB”.
+      </p>
+      <p>
+        Plusieurs solutions existent pour signer le formulaire :
+        <ul>
+          <li>
+            <b>Impression et signature manuscrite :</b> Imprimez le formulaire, signez-le à la main dans le cadre approprié, puis scannez-le.
+          </li>
+          <li>
+            <b>Signature électronique :</b> Utilisez Adobe reader ou un outil en ligne pour compléter et signer le formulaire directement sur votre ordinateur, par exemple :
+            <ul>
+              <li><a href="https://www.ilovepdf.com/fr/signer-pdf" target="_blank">ilovepdf.com/fr/signer-pdf</a></li>
+              <li><a href="https://smallpdf.com/fr/signer-un-pdf" target="_blank">smallpdf.com/fr/signer-un-pdf</a></li>
+              <li><a href="https://pdfguru.com/app/fr" target="_blank">pdfguru.com/app/fr</a></li>
+            </ul>
+          </li>
+        </ul>
+      </p>
+      <p>
+        <em>Veillez à ce que la signature soit bien positionnée dans le cadre "LICENCIÉ" pour que le formulaire soit accepté.</em>
+      </p>
+    </div>
+  </div>
+
+  <div class="step">
+    <h2 id="etape5">💾 Étape 5 : Enregistrer et ajouter sur MonClub</h2>
+    <img class="tutorial-image" src="upload.png" alt="upload" style="max-width:100%;margin:1em 0;">
+    <p>Une fois le formulaire rempli et signé, enregistrez-le sur votre ordinateur ou smartphone.</p>
+    <p>
+      <strong>Depuis MonClub lors d'une inscription à une formule :</strong><br>
+      Ajoutez votre formulaire rempli et signé en cliquant sur <b>« choisir un document »</b> puis en sélectionnant le fichier sur votre ordinateur ou smartphone.
+    </p>
+    <p>
+      <em>Assurez-vous que le document est bien lisible et que les quatre coins sont visibles avant de l'envoyer.</em>
+    </p>
+  </div>
+
+  
+  <div class="step">
+    <h2 id="problemes">❗ Problèmes fréquents</h2>
+    <ul>
+      <li>Si vous n’arrivez pas à remplir le PDF dans votre navigateur, utilisez <a
+          href="https://get.adobe.com/fr/reader/" target="_blank">
+          Adobe Acrobat Reader (téléchargement gratuit)
+        </a></li>
+      <li>Vous ne pouvez pas sauvegarder ? Faites une impression PDF (« Imprimer » &gt; PDF).</li>
+    </ul>
+  </div>
+
+  <div class="step">
+    <h2 id="contact">📩 Besoin d’aide ?</h2>
+    <p>Contactez-nous à <a href="mailto:contact@dauhpinschatellerault.fr">contact@dauhpinschatellerault.fr</a></p>
+  </div>
 
 </body>
+
 </html>
